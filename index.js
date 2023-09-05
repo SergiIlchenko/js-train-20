@@ -128,7 +128,7 @@ function Truck(
   weight
 ) {
   // Викликаємо Vehicle.call та передаємо в нього: this, brand, model, year, mileage
-  Vehicle.call(this, [brand, model, year, mileage]);
+  Vehicle.call(this, brand, model, year, mileage);
   //  Записуєм в this.color значення аргументу color, в this.engineType значення аргументу engineType і так далі зі всіми аргументами
   this.color = color;
   this.engineType = engineType;
@@ -140,8 +140,8 @@ function Truck(
 }
 
 // Додатковий метод specific для прототипу Trucks, примає число якщо воно більше towingCapacity виводить рядок в консоль: Навантаження занадто важке для буксирування, якщо ні то рядок Тягнення навантаження...
-Truck.prototype.specific = function (num) {
-  if (num > this.towingCapacity) {
+Truck.prototype.two = function (weight) {
+  if (weight > this.towingCapacity) {
     console.log("Навантаження занадто важке для буксирування");
   } else {
     console.log("Тягнення навантаження...");
@@ -181,9 +181,9 @@ let myTruck = new Truck(
  */
 
 // Викликаємо метод tow з вагою меншою за towingCapacity
-
+myTruck.two(9000);
 // Викликаємо метод tow з вагою більшою за towingCapacity
-
+myTruck.two(11000);
 // Додаємо метод drive для прототипу Car, який збільшує kilometers на передане число, та виводить Подорожуємо <kilometers> кілометрів у <brand> <model>.
 Car.prototype.drive = function (kilometers) {
   this.mileage += kilometers;
